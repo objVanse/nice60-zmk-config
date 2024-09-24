@@ -97,7 +97,7 @@ combos {
             layers = <1>;
             timeout-ms = <200>;
             key-positions = <13 60>;
-            bindings = <&bt BT_CLR>;
+            bindings = <&bt BT_CLR_ALL>;
         };
     };
 };
