@@ -2,7 +2,15 @@
 * Copyright (c) 2021 Nick Winans
 *
 * SPDX-License-Identifier: MIT
-*
+*/
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/reset.h>
+#include <dt-bindings/zmk/ext_power.h>
+/*
 *============================================================================================================================================================
 *【 ESC 】0≋ 【 1 】1≋ 【 2 】2≋ 【 3 】3≋ 【 4 】4≋ 【 5 】5≋ 【 6 】6≋ 【 7 】7≋ 【 8 】8≋ 【 9 】9≋ 【 0 】10≋ 【 - 】11≋ 【 = 】12≋ 【____BACKSPACE】13≋
 *
@@ -15,22 +23,12 @@
 *【  CTRL  】53≋ 【  WIN  】54≋ 【  ALT  】55≋ 【_________________S_P_A_C_E_________________】56≋ 【  ALT  】57≋ 【  WIN  】58≋ 【  FN  】59≋ 【  CTRL  】60≋
 *=============================================================================================================================================================
 */
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/reset.h>
-#include <dt-bindings/zmk/ext_power.h>
-
-
 / {
-keymap {
-compatible = "zmk,keymap";
+	keymap {
+                compatible = "zmk,keymap";
 
-default_layer {
-bindings = <
+        default_layer {
+                bindings = <
 /*
 【 ESC 】0≋ 【 1 】1≋ 【 2 】2≋ 【 3 】3≋ 【 4 】4≋ 【 5 】5≋ 【 6 】6≋ 【 7 】7≋ 【 8 】8≋ 【 9 】9≋ 【 0 】10≋ 【 - 】11≋ 【 = 】12≋ 【____BACKSPACE】13≋
 */ &kp ESC   &kp N1    &kp N2    &kp N3     &kp N4    &kp N5    &kp N6    &kp N7    &kp N8    &kp N9     &kp N0     &kp MINUS  &kp EQUAL       &kp BSPC
@@ -49,8 +47,8 @@ bindings = <
 >;
 };
 
-caps_layer {
-bindings = <
+        caps_layer {
+                bindings = <
 /*
 【 ESC 】0≋ 【 1 】1≋ 【 2 】2≋ 【 3 】3≋ 【 4 】4≋ 【 5 】5≋ 【 6 】6≋ 【 7 】7≋ 【 8 】8≋ 【 9 】9≋ 【 0 】10≋ 【 - 】11≋ 【 = 】12≋ 【____BACKSPACE】13≋
 */ &kp GRAVE    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10    &kp F11    &kp F12         &trans
@@ -69,14 +67,14 @@ bindings = <
 >;
 };
 
-media_layer {
-bindings = <
+        media_layer {
+                bindings = <
 /*
 【 ESC 】0≋ 【 1 】1≋ 【 2 】2≋ 【 3 】3≋ 【 4 】4≋ 【 5 】5≋ 【 6 】6≋ 【 7 】7≋ 【 8 】8≋ 【 9 】9≋ 【 0 】10≋ 【 - 】11≋ 【 = 】12≋ 【____BACKSPACE】13≋
-*/ &trans    &trans     &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans      &trans     &trans          &trans
+*/ &trans    &trans     &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans      &trans     &trans    &BT_CLR_ALL
 /*
 【 TAB 】14≋ 【 Q 】15≋ 【 W 】16≋ 【 E 】17≋ 【 R 】18≋ 【 T 】19≋ 【 Y 】20≋ 【 U 】21≋ 【 I 】22≋ 【 O 】23≋ 【 P 】24≋ 【 [ 】25≋ 【 ] 】26≋ 【 \ 】27≋ 
-*/ &trans     &kp C_PP  &kp C_VOL_UP  &trans    &trans     &trans     &trans     &trans     &trans     &trans      &trans     &trans     &trans     &trans
+*/ &trans     &kp C_PP  &kp C_VOL_UP  &trans    &trans     &trans     &trans     &trans     &trans     &trans      &trans     &trans   &trans   &BT_SEL 0
 /*
 【 CAPS 】28≋ 【 A 】29≋ 【 S 】30≋ 【 D 】31≋ 【 F 】32≋ 【 G 】33≋ 【 H 】34≋ 【 J 】35≋ 【 K 】36≋ 【 L 】37≋ 【 ; 】38≋ 【 ' 】39≋ 【_______RETURN】40≋ 
 */ &trans   &kp C_PREV &kp C_VOL_DN &kp C_NEXT &trans     &trans     &trans     &trans     &trans      &trans     &trans     &trans             &trans
@@ -89,18 +87,4 @@ bindings = <
 >;
 };
 
-};
-
-combos {
-        compatible = "zmk,combos";
-        combo_bt {
-            layers = <1>;
-            timeout-ms = <200>;
-            key-positions = <13 60>;
-            bindings
-                = <&bt BT_CLR_ALL>
-                , <&bt BT_SEL 0>
-                ;
-        };
-    };
 };
